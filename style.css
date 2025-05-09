@@ -8,10 +8,24 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 25%;left: 50%;
+    top: 25%; left: 50%;
     transform: translate(-50%, -50%);
     gap: 15px;}
 
 .distintivo img {
-    height: 50px;
-    filter: drop-shadow(2px 2px 2px #333);}
+    height: 100px;
+    filter: drop-shadow(2px 2px 2px #380023);}
+
+.opzioni {
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.gioca {
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}
