@@ -1,16 +1,25 @@
 body {
+    position: fixed;
     background-color: #7b2e60;
     margin: 0; 
-    height: 100vh;}
+    height: 100vh; 
+}
+
+.nota{
+    position: fixed;
+    color: #f1e3e6;
+    bottom: 0%; right: 1%;
+}
 
 .distintivo {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 30%; left: 50%;
     transform: translate(-50%, -50%);
-    gap: 15px;}
+    gap: 15px;
+}
 
 .distintivo img {
     height: 100px;
@@ -19,7 +28,7 @@ body {
 .impostazioni {
     border: none;
     padding: 0;
-    position: absolute;
+    position: fixed;
     top: 40%;
     left: 20%;
     background: url("img/imp-a1.png") no-repeat center center;
@@ -36,7 +45,7 @@ body {
 .gioca {
     border: none;
     padding: 0;
-    position: absolute;
+    position: fixed;
     top: 40%;
     right: 20%;
     background: url("img/gio-a1.png") no-repeat center center;
