@@ -8,7 +8,8 @@ body {
 .nota{
     position: fixed;
     color: #f1e3e6;
-    bottom: 0%; right: 1%;
+    bottom: 0%; 
+    right: 1%;
 }
 
 .distintivo {
@@ -16,7 +17,8 @@ body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 30%; left: 50%;
+    top: 30%; 
+    left: 50%;
     transform: translate(-50%, -50%);
     gap: 15px;
 }
@@ -57,4 +59,24 @@ body {
 
 .gioca:active {
     background-image: url("img/gio-p1.png");
+}
+
+.contenitore {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenuto {
+    background-color: #f1e3e6;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 5%;
+    padding-top: 5%;
+    position: relative;
 }
