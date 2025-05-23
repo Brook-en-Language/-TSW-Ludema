@@ -10,7 +10,7 @@ function inviaRisposta(patternId, valore, codice) {
     dati.append("valore", valore);
     dati.append("codice", codice);
 
-    fetch("salvaRisposta.php", {
+    fetch("data/salvaRisposta.php", {
         method: "POST",
         body: dati
     })
