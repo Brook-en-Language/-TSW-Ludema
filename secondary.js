@@ -19,3 +19,7 @@ function inviaRisposta(patternId, valore, codice) {
         console.log("Risposta registrata:", data);
     });
 }
+
+pulsante1.addEventListener("click", () => inviaRisposta(1, 1, "U001")); //test
+pulsante2.addEventListener("click", () => inviaRisposta(1, 0, "U002")); 
+
