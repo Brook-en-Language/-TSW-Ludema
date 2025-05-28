@@ -13,7 +13,40 @@ let patternDisponibili = [...Array(70).keys()].map(i => i + 1);  // pattern 1-70
 let partitaFinita = false;
 
 let tempoPartitaMinuti = 1; // da cambiare
-let codiceUtente = "U001"; // id codice utente
+
+
+
+
+let codiceUtente = localStorage.getItem("codiceGiocatore");
+
+if (!codiceUtente) {
+    codiceUtente = "U" + Math.floor(1000 + Math.random() * 9000);
+    localStorage.setItem("codiceGiocatore", codiceUtente);
+}
+
+// Mostra ID utente nel div solo dopo averlo generato
+document.addEventListener("DOMContentLoaded", () => {
+    const utenteIdBox = document.getElementById("utenteIdBox");
+    if (utenteIdBox) {
+        utenteIdBox.textContent = `Il tuo ID giocatore : ${codiceUtente}`;
+    }
+});
+
+
+
+const tipoPartita = localStorage.getItem("tipoPartita") || "privata";
+const nomeFilePartita = tipoPartita === "pubblica" ? "partita_pubblica.json" : "partita_privata.json";
+
+
+
+if (tipoPartita === "pubblica") {
+    fetch("data/registraGiocatore.php", {
+        method: "POST",
+        body: new URLSearchParams({ codice: codiceUtente })
+    })
+    .then(r => r.json())
+    .then(data => console.log("Giocatori attivi:", data.giocatori));
+}
 
 // BOT simulati
 const botCodici = ["B001", "B002"];
@@ -33,6 +66,7 @@ function avviaCountdown() {
     }, 1000);
 }
 
+
 function avviaGioco() {
     pulsanti.forEach(p => p.disabled = false);
     mostraProssimoPattern();
@@ -42,20 +76,28 @@ function avviaGioco() {
 
 function mostraProssimoPattern() {
     if (patternDisponibili.length === 0) {
-        finePartita("Tutti i pattern completati.");
-        return;
-    }
+    patternCorrente = null;        // blocca risposte future
+    finePartita("Tutti i pattern completati.");
+    return;
+}
+
     const index = Math.floor(Math.random() * patternDisponibili.length);
     patternCorrente = patternDisponibili.splice(index, 1)[0];
     console.log("Mostrato pattern:", patternCorrente);
     schermata.textContent = `Pattern: ${patternCorrente}`;
 }
 
+
+
+
 function inviaRisposta(patternId, valore, codice) {
+    if (partitaFinita || patternCorrente === null) return;
+
     const dati = new URLSearchParams();
     dati.append("pattern_id", patternId);
     dati.append("valore", valore);
     dati.append("codice", codice);
+    dati.append("file", nomeFilePartita);
 
     fetch("data/salvaRisposta.php", {
         method: "POST",
@@ -65,10 +107,21 @@ function inviaRisposta(patternId, valore, codice) {
     .then(data => {
         console.log("Risposta registrata:", data);
         if (data.giocatore !== "NONE" && !partitaFinita) {
-            mostraProssimoPattern();
-        }
+   
+    mostraProssimoPattern();
+}
+
     });
 }
+
+
+
+
+
+
+
+
+
 
 // evento al click utente
 pulsante1.addEventListener("click", () => inviaRisposta(patternCorrente, 1, codiceUtente));
@@ -94,10 +147,97 @@ function avviaTimerFinePartita() {
     }, tempoPartitaMinuti * 60 * 1000);
 }
 
+
+
 function finePartita(messaggio) {
     partitaFinita = true;
-    schermata.textContent =messaggio;
+    schermata.textContent = messaggio;
     pulsanti.forEach(p => p.disabled = true);
+
+    // aggiorna classifica UNA VOLTA
+    aggiornaClassifica();
+
+    if (tipoPartita === "pubblica") {
+        setTimeout(() => {
+            fetch(`data/resetPartita.php?file=${nomeFilePartita}`)
+                .then(res => res.json())
+                .then(data => console.log("Reset post-partita:", data));
+        }, 2000);
+    }
 }
 
-window.onload = avviaCountdown;
+
+
+
+function aggiornaClassifica() {
+    fetch(`data/classifica.php?file=${nomeFilePartita}`)
+        .then(res => res.json())
+        .then(data => {
+            const lista = document.getElementById("listaClassifica");
+            lista.innerHTML = '';
+            Object.entries(data.classifica).forEach(([nome, punteggio]) => {
+                const li = document.createElement('li');
+                li.textContent = `${nome}: ${punteggio}`;
+                lista.appendChild(li);
+            });
+        });
+}
+
+
+
+setInterval(() => {
+    if (!partitaFinita) aggiornaClassifica();
+}, 3000);
+
+// ogni 10 secondi rinnova la connessione (solo in partita pubblica)
+if (tipoPartita === "pubblica") {
+  setInterval(() => {
+    fetch("data/registraGiocatore.php", {
+      method: "POST",
+      body: new URLSearchParams({ codice: codiceUtente })
+    });
+  }, 10000);
+
+}
+
+
+
+
+
+
+window.addEventListener("beforeunload", function () {
+  const codice = localStorage.getItem("codiceGiocatore");
+  if (codice) {
+    navigator.sendBeacon("data/disconnettiGiocatore.php", new URLSearchParams({ codice }));
+  }
+});
+
+
+document.getElementById("btnLobby").addEventListener("click", () => {
+    window.location.href = "index.html"
+});
+
+
+
+
+window.onload = () => {
+    document.getElementById("demoToggle").checked = false;
+
+    document.getElementById("infoPartita").textContent =
+        tipoPartita === "pubblica" ? "Modalita: Pubblica" : "Modalita: Privata";
+
+    if (tipoPartita === "privata") {
+        fetch(`data/resetPartita.php?file=${nomeFilePartita}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log("Partita resettata:", data);
+                avviaCountdown();
+            })
+            .catch(err => {
+                console.error("Errore nel reset della partita:", err);
+                avviaCountdown(); // fallback
+            });
+    } else {
+        avviaCountdown(); // pubblica non resetta all'avvio
+    }
+};
