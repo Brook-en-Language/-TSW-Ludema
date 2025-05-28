@@ -34,7 +34,7 @@ body {
     position: fixed;
     top: 40%;
     left: 20%;
-    background: url("img/imp1-a.png") no-repeat center center;
+    background: url("img/imp-a1.png") no-repeat center center;
     background-size: contain;
     width: 300px;
     height: 300px;
@@ -42,7 +42,7 @@ body {
 }
 
 .impostazioni:active {
-    background-image: url("img/imp1-p.png");
+    background-image: url("img/imp-p1.png");
 }
 
 .gioca {
@@ -51,7 +51,7 @@ body {
     position: fixed;
     top: 40%;
     right: 20%;
-    background: url("img/gio1-a.png") no-repeat center center;
+    background: url("img/gio-a1.png") no-repeat center center;
     background-size: contain;
     width: 300px;
     height: 300px;
@@ -59,8 +59,9 @@ body {
 }
 
 .gioca:active {
-    background-image: url("img/gio1-p.png");
+    background-image: url("img/gio-p1.png");
 }
+
 
 .contenitore {
     background-color: rgba(0, 0, 0, 0.2);
