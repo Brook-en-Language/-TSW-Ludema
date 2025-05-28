@@ -1,0 +1,407 @@
+[
+    {
+        "pattern_id": 6,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 13,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 13,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 60,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 60,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 49,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 49,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 39,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 39,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 68,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 68,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 54,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 54,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 16,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 16,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 36,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 36,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 10,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 10,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 10,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 10,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 31,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 31,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 30,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 30,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 64,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 64,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 56,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 56,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 19,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 19,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 66,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 66,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 46,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 46,
+        "giocatore": "B002",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 48,
+        "giocatore": "B001",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 48,
+        "giocatore": "NONE",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 60,
+        "giocatore": "U5992",
+        "tipoPartita": "pubblica"
+    },
+    {
+        "pattern_id": 56,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 7,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 21,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 57,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 28,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 18,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 16,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 24,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 44,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 7,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 62,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 17,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 70,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 39,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 43,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 58,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 12,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 4,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 52,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 17,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 50,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 6,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 60,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 42,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 46,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 18,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 62,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 8,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 49,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 56,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 47,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 53,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 19,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 5,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 51,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 55,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    },
+    {
+        "pattern_id": 63,
+        "giocatore": "U5992",
+        "tipoPartita": "privata"
+    }
+]
