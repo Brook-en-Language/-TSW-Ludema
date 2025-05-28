@@ -7,6 +7,7 @@ const n2 = document.getElementById("noc2");
 bi.addEventListener("click", apriBI);
 gi.addEventListener("click", apriGI)
 n1.addEventListener("click", apriPartita);
+n2.addEventListener("click", apriPartitaPubblica);
 
 function apriBI(){
     cn.style.display = "flex";
@@ -26,6 +27,13 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-function apriPartita(){
-     window.location.href = "game.html";
+function apriPartita() {
+    localStorage.setItem("tipoPartita", "privata");
+    window.location.href = "game.html";
+}
+
+
+function apriPartitaPubblica() {
+    localStorage.setItem("tipoPartita", "pubblica");
+    window.location.href = "game.html";
 }
