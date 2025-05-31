@@ -2,15 +2,39 @@ body {
     zoom: 110%;
     position: fixed;
     background-color: #7b2e60;
-    margin: 0; 
-    height: 100vh; 
+    font-family: "rajdhani";
+    margin: 0;
+    padding: 0;
+    width: 100vw; 
+    height: 100vh;
+    overflow: hidden; 
+    left: 0;
+    transition: filter 0.5s ease;
+}
+
+@font-face{
+    font-family: "rajdhani"; 
+    src: url("font/rajdhani-semibold.ttf") format('truetype');
+}
+
+#filtro {
+    position: absolute;
+    right: 5%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: filter;
+    backface-visibility: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
 }
 
 .nota{
     position: fixed;
     color: #f1e3e6;
-    bottom: 0%; 
-    right: 1%;
+    bottom: 8%; 
+    right: 5%;
 }
 
 .distintivo {
@@ -32,36 +56,35 @@ body {
     border: none;
     padding: 0;
     position: fixed;
-    top: 40%;
+    top: 52%;
     left: 20%;
-    background: url("img/imp-a1.png") no-repeat center center;
+    background: url("img/imp1-a.png") no-repeat center center;
     background-size: contain;
     width: 300px;
-    height: 300px;
+    height: 150px;
     cursor: pointer;
 }
 
 .impostazioni:active {
-    background-image: url("img/imp-p1.png");
+    background-image: url("img/imp1-p.png");
 }
 
 .gioca {
     border: none;
     padding: 0;
     position: fixed;
-    top: 40%;
+    top: 52%;
     right: 20%;
-    background: url("img/gio-a1.png") no-repeat center center;
+    background: url("img/gio1-a.png") no-repeat center center;
     background-size: contain;
     width: 300px;
-    height: 300px;
+    height: 150px;
     cursor: pointer;
 }
 
 .gioca:active {
-    background-image: url("img/gio-p1.png");
+    background-image: url("img/gio1-p.png");
 }
-
 
 .contenitore {
     background-color: rgba(0, 0, 0, 0.2);
@@ -77,13 +100,25 @@ body {
 
 .contenuto {
     background-color: #f1e3e6;
-    border: 5px solid #b26193;
+    border: 5px solid #310224;
     position: fixed;
     width: 40vw;
     height: 40vh;
     border-radius: 5%;
     padding-top: 5%;
-    position: relative;
+}
+
+.con5 {
+    border: none;
+    background: url("img/con3-a.png") no-repeat center center;
+    background-size: contain;
+    width: 150px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.con5:active {
+    background-image: url("img/con3-p.png");
 }
 
 .noc1 {
@@ -109,7 +144,7 @@ body {
     border: none;
     padding: 0;
     position: absolute;
-    bottom: 55px;
+    bottom: 60px;
     right: 50px;
     width: 200px;
     height: 200px;
@@ -120,4 +155,151 @@ body {
 
 .noc2:active {
     background-image: url("img/noc2-p.png");
+}
+
+.posizione-destra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;          
+    padding-bottom: 10px;
+    width: fit-content; 
+    margin-left: 60% ;  
+}
+
+.posizione-sinistra{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: absolute;  
+    bottom: 25%;       
+    left: 15%;   
+}
+
+.etichetta {
+    font-size: 16px;
+    width: 150px;       
+    text-align: center;  
+    flex-shrink: 0;     
+}
+
+.elemento {
+    width: 150px;       
+    accent-color: #310224;
+    cursor: pointer;
+}
+
+.filtro-normale {
+    filter: none !important;
+}
+
+.filtro-protanopia {
+    filter: contrast(0.8) brightness(1.2) saturate(0.6) hue-rotate(10deg);
+}
+
+.filtro-deuteranopia {
+    filter: contrast(0.8) brightness(1.2) saturate(0.5);
+}
+
+.filtro-tritanopia {
+    filter: contrast(0.7) brightness(1.1) hue-rotate(45deg);
+}
+
+/*Stili per score*/
+
+.bsx{
+    display: flex;
+    position: fixed;
+    border: none;
+    bottom: 3%;
+    left: 3%;
+    width: 250px;
+    height: 100px;
+    background: url("img/bsx-a.png") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.bsx:active {
+    background-image: url("img/bsx-p.png");
+}
+
+.bdx {
+    display: flex;
+    position: fixed;
+    border: none;
+    bottom: 3%;
+    right: 3%;
+    width: 250px;
+    height: 100px;
+    background: url("img/bdx-a.png") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.bdx:active {
+    background-image: url("img/bdx-p.png");
+}
+
+.contenitore-classifica {
+    position: absolute;
+    width: 100%;
+    max-width: 800px;
+    top: 5%;
+    left: 15%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #380023;
+}
+
+.tabella-classifica {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f1e3e6;
+}
+
+.tabella-classifica th {
+    padding: 12px 15px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.tabella-classifica td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.tabella-classifica td:last-child {
+    border-right: none;
+}
+
+.tabella-classifica tr:last-child td {
+    border-bottom: none;
+}
+
+.posizione {
+    font-weight: bold;
+    width: 80px;
+}
+
+.nome-giocatore {
+    font-weight: 500;
+}
+
+.punteggio {
+    font-weight: bold;
+    text-align: right;
+    color: #f1e3e6;
+}
+
+.caricamento {
+    padding: 20px;
+    text-align: center;
+    color: #f1e3e6;
 }

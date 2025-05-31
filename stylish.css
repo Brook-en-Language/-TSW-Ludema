@@ -6,6 +6,19 @@ body {
     height: 100vh; 
 }
 
+#filtro {
+    position: absolute;
+    right: 5%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: filter;
+    backface-visibility: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
+}
+
 .pulsantiera {
     display: flex;
     justify-content: center;
@@ -45,4 +58,20 @@ body {
     width: 100px;
     height: 100px;
     cursor: pointer;
+}
+
+.filtro-normale {
+    filter: none !important;
+}
+
+.filtro-protanopia {
+    filter: contrast(0.8) brightness(1.2) saturate(0.6) hue-rotate(10deg);
+}
+
+.filtro-deuteranopia {
+    filter: contrast(0.8) brightness(1.2) saturate(0.5);
+}
+
+.filtro-tritanopia {
+    filter: contrast(0.7) brightness(1.1) hue-rotate(45deg);
 }

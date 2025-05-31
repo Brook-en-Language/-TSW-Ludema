@@ -13,10 +13,6 @@ let patternDisponibili = [...Array(70).keys()].map(i => i + 1);  // pattern 1-70
 let partitaFinita = false;
 
 let tempoPartitaMinuti = 1; // da cambiare
-
-
-
-
 let codiceUtente = localStorage.getItem("codiceGiocatore");
 
 if (!codiceUtente) {
@@ -32,12 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-
 const tipoPartita = localStorage.getItem("tipoPartita") || "privata";
 const nomeFilePartita = tipoPartita === "pubblica" ? "partita_pubblica.json" : "partita_privata.json";
-
-
 
 if (tipoPartita === "pubblica") {
     fetch("data/registraGiocatore.php", {
@@ -66,7 +58,6 @@ function avviaCountdown() {
     }, 1000);
 }
 
-
 function avviaGioco() {
     pulsanti.forEach(p => p.disabled = false);
     mostraProssimoPattern();
@@ -86,9 +77,6 @@ function mostraProssimoPattern() {
     console.log("Mostrato pattern:", patternCorrente);
     schermata.textContent = `Pattern: ${patternCorrente}`;
 }
-
-
-
 
 function inviaRisposta(patternId, valore, codice) {
     if (partitaFinita || patternCorrente === null) return;
@@ -114,15 +102,6 @@ function inviaRisposta(patternId, valore, codice) {
     });
 }
 
-
-
-
-
-
-
-
-
-
 // evento al click utente
 pulsante1.addEventListener("click", () => inviaRisposta(patternCorrente, 1, codiceUtente));
 pulsante2.addEventListener("click", () => inviaRisposta(patternCorrente, 0, codiceUtente));
@@ -140,14 +119,11 @@ function avviaBot() {
     }, 3000);
 }
 
-
 function avviaTimerFinePartita() {
     setTimeout(() => {
         finePartita("Tempo scaduto");
     }, tempoPartitaMinuti * 60 * 1000);
 }
-
-
 
 function finePartita(messaggio) {
     partitaFinita = true;
@@ -164,10 +140,8 @@ function finePartita(messaggio) {
                 .then(data => console.log("Reset post-partita:", data));
         }, 2000);
     }
+    window.location.href = "score.html";
 }
-
-
-
 
 function aggiornaClassifica() {
     fetch(`data/classifica.php?file=${nomeFilePartita}`)
@@ -182,8 +156,6 @@ function aggiornaClassifica() {
             });
         });
 }
-
-
 
 setInterval(() => {
     if (!partitaFinita) aggiornaClassifica();
@@ -200,11 +172,6 @@ if (tipoPartita === "pubblica") {
 
 }
 
-
-
-
-
-
 window.addEventListener("beforeunload", function () {
   const codice = localStorage.getItem("codiceGiocatore");
   if (codice) {
@@ -212,13 +179,9 @@ window.addEventListener("beforeunload", function () {
   }
 });
 
-
 document.getElementById("btnLobby").addEventListener("click", () => {
     window.location.href = "index.html"
 });
-
-
-
 
 window.onload = () => {
     document.getElementById("demoToggle").checked = false;

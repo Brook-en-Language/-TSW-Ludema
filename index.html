@@ -1,136 +1,160 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ludema - Gioca con i tuoi amici!</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ludema - Gioca con i tuoi amici!</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="filtro">
 
-    <div class="distintivo">
-        <img src="img/L1.png" alt="L">
-        <img src="img/U1.png" alt="U">
-        <img src="img/D1.png" alt="D">
-        <img src="img/E1.png" alt="E">
-        <img src="img/M1.png" alt="M">
-        <img src="img/A1.png" alt="A">
-    </div>
-
-    <div class="impostazioni">
-        <button id="imp" class="impostazioni"></button>
-    </div>
-
-    <div class="gioca">
-        <button id="gio" class="gioca"></button>
-    </div>
-
-    <div id="con" class="contenitore">
-        <div class="contenuto"></div>
-    </div>
-
-    <div id="noc" class="contenitore">
-        <div class="contenuto">
-            <button id="noc1" class="noc1"></button>
-            <button id="noc2" class="noc2"></button>
+        <div>
+            <audio id="musica" src="audio/musica.mp3" autoplay loop></audio>
         </div>
-    </div>
 
-    <!-- Lobby Pubblica -->
-    <div id="lobbyPubblica" style="background-color: rgba(0, 0, 0, 0.4); color: white; padding: 16px; border-radius: 10px; max-width: 300px; margin: 20px auto;">
-        <h3>Giocatori nella Lobby Pubblica:</h3>
-        <ul id="listaGiocatoriLobby"></ul>
-    </div>
+        <div class="distintivo">
+            <img src="img/L1.png" alt="L">
+            <img src="img/U1.png" alt="U">
+            <img src="img/D1.png" alt="D">
+            <img src="img/E1.png" alt="E">
+            <img src="img/M1.png" alt="M">
+            <img src="img/A1.png" alt="A">
+        </div>
 
-    <!-- Script per aggiornare la lista ogni 3 secondi -->
-    <script>
-        function aggiornaLobbyPubblica() {
+        <div class="impostazioni">
+            <button id="imp" class="impostazioni"></button>
+        </div>
+
+        <div class="gioca">
+            <button id="gio" class="gioca"></button>
+        </div>
+
+        <div id="con" class="contenitore">
+            <div class="contenuto">
+                <div class="posizione-destra">
+                    <div class="etichetta">Volume generale</div>
+                    <input id="vol" class="elemento" type="range" min="0" max="1" step="any" value="0.5">
+                </div>
+                <div class="posizione-destra">
+                    <div class="etichetta">Effetti sonori</div>
+                    <select id="con1" class="elemento">
+                        <option value="attiva">attiva</option>
+                        <option value="disattiva">disattiva</option>
+                    </select>
+                </div>
+                <div class="posizione-destra">
+                    <div class="etichetta">Modalità daltonismo</div>
+                    <select id="con2" class="elemento">
+                        <option value="normale">normale</option>
+                        <option value="protanopia">protanopia</option>
+                        <option value="deuteranopia">deuteranopia</option>
+                        <option value="tritanopia">tritanopia</option>
+                    </select>
+                </div>
+                <div class="posizione-sinistra">
+                    <input type="text" id="con3" placeholder="Username">
+                    <input type="password" id="con4" placeholder="Password">
+                    <button id="con5" class="con5"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="noc" class="contenitore">
+            <div class="contenuto">
+                <button id="noc1" class="noc1"></button>
+                <button id="noc2" class="noc2"></button>
+            </div>
+        </div>
+
+        <!--ricorda--> 
+
+        <!-- Lobby Pubblica -->
+        <div id="lobbyPubblica" style="background-color: rgba(0, 0, 0, 0.4); color: white; padding: 16px; border-radius: 10px; max-width: 300px; margin: 20px auto;">
+            <h3>Giocatori nella Lobby Pubblica:</h3>
+            <ul id="listaGiocatoriLobby"></ul>
+        </div>
+
+        <!-- Script per aggiornare la lista ogni 3 secondi -->
+
+        <script>
+            function aggiornaLobbyPubblica() {
+                fetch('data/getGiocatori.php')
+                    .then(response => response.json())
+                    .then(giocatori => {
+                        const ul = document.getElementById('listaGiocatoriLobby');
+                        ul.innerHTML = '';
+                        giocatori.forEach(g => {
+                            const li = document.createElement('li');
+                            if (typeof g === "string") {
+                                li.textContent = g;
+                            } else {
+                                li.textContent = g.nome || g.codice || "Giocatore";
+                                }
+                            ul.appendChild(li);
+                            });
+                    })
+                    .catch(err => console.error('Errore nel caricamento dei giocatori:', err));
+            }
+            setInterval(aggiornaLobbyPubblica, 3000);
+            aggiornaLobbyPubblica(); // prima esecuzione
+        </script>
+
+        <script>
             fetch('data/getGiocatori.php')
-                .then(response => response.json())
+                .then(res => res.json())
                 .then(giocatori => {
                     const ul = document.getElementById('listaGiocatoriLobby');
                     ul.innerHTML = '';
                     giocatori.forEach(g => {
-  const li = document.createElement('li');
-  if (typeof g === "string") {
-    li.textContent = g;
-  } else {
-    li.textContent = g.nome || g.codice || "Giocatore";
-  }
-  ul.appendChild(li);
-});
+                    const li = document.createElement('li');
+                    li.textContent = typeof g === 'string' ? g : (g.nome || g.codice || 'Giocatore');
+                    ul.appendChild(li);
+                        });
+                    });
+        </script>
 
-                })
-                .catch(err => console.error('Errore nel caricamento dei giocatori:', err));
-        }
+        <script>
+            setInterval(() => {
+            fetch('data/getGiocatori.php')
+                .then(res => res.json())
+                .then(giocatori => {
+                    const ul = document.getElementById('listaGiocatoriLobby');
+                    ul.innerHTML = '';
+                    giocatori.forEach(g => {
+                    const li = document.createElement('li');
+            
+                    li.textContent = (typeof g === 'string') ? g : (g.nome || g.codice || "Giocatore");
 
-        setInterval(aggiornaLobbyPubblica, 3000);
-        aggiornaLobbyPubblica(); // prima esecuzione
-    </script>
-<script>
-fetch('data/getGiocatori.php')
-  .then(res => res.json())
-  .then(giocatori => {
-    const ul = document.getElementById('listaGiocatoriLobby');
-    ul.innerHTML = '';
-    giocatori.forEach(g => {
-      const li = document.createElement('li');
-      li.textContent = typeof g === 'string' ? g : (g.nome || g.codice || 'Giocatore');
-      ul.appendChild(li);
-    });
-  });
-</script>
+                    ul.appendChild(li);
+                    });
+                });
+            }, 3000);
+        </script>
+    
+        <style>
+            #listaBot {
+                background-color: rgba(0, 0, 0, 0.4); 
+                color: white;
+                font-family: sans-serif;
+                font-size: 1.2em;
+                padding: 16px;
+                border-radius: 10px;
+                max-width: 300px;
+                margin: 20px auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            }
 
-<script>
-setInterval(() => {
-  fetch('data/getGiocatori.php')
-    .then(res => res.json())
-    .then(giocatori => {
-      const ul = document.getElementById('listaGiocatoriLobby');
-      ul.innerHTML = '';
-      giocatori.forEach(g => {
-        const li = document.createElement('li');
-        
-	li.textContent = (typeof g === 'string') ? g : (g.nome || g.codice || "Giocatore");
+            #listaBot ul {
+                list-style-type: disc;
+                padding-left: 20px;
+            }
+        </style>
 
-        ul.appendChild(li);
-      });
-    });
-}, 3000);
-</script>
-
-    <!-- Crediti -->
-    <p class="nota">Ludema per TSW da Bilotti Matteo e Palmieri Davide</p>
-    <script src="main.js"></script>
-
-<style>
-  #listaBot {
-  background-color: rgba(0, 0, 0, 0.4); 
-  color: white;
-  font-family: sans-serif;
-  font-size: 1.2em;
-  padding: 16px;
-  border-radius: 10px;
-  max-width: 300px;
-  margin: 20px auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-  #listaBot ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-
-const modalita = document.querySelector('input[name="modalita"]:checked').value;
-localStorage.setItem("modalita_partita", modalita);
-</style>
-
-
-</body>
+        <!--ricorda--> 
+        <p class="nota">Ludema per TSW da Bilotti Matteo e Palmieri Davide</p>
+        <script src="main.js"></script>
+        </div>
+    </body>
 </html>
-
-
-
-
-
 
