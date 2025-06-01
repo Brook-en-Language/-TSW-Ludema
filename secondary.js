@@ -133,15 +133,27 @@ function finePartita(messaggio) {
     // aggiorna classifica UNA VOLTA
     aggiornaClassifica();
 
+    // salva il tipo di partita nel localStorage
+    localStorage.setItem("tipoPartita", tipoPartita);
+
     if (tipoPartita === "pubblica") {
-        setTimeout(() => {
-            fetch(`data/resetPartita.php?file=${nomeFilePartita}`)
-                .then(res => res.json())
-                .then(data => console.log("Reset post-partita:", data));
-        }, 2000);
+        fetch("data/statoPartita.php", {
+            method: "POST",
+            body: new URLSearchParams({ stato: "finita" })
+        })
+        .then(() => {
+            window.location.href = "score.html";
+        })
+        .catch(err => {
+            console.error("Errore aggiornamento stato partita:", err);
+            window.location.href = "score.html"; // fallback
+        });
+    } else {
+        window.location.href = "score.html";
     }
-    window.location.href = "score.html";
 }
+
+
 
 function aggiornaClassifica() {
     fetch(`data/classifica.php?file=${nomeFilePartita}`)
@@ -201,6 +213,31 @@ window.onload = () => {
                 avviaCountdown(); // fallback
             });
     } else {
-        avviaCountdown(); // pubblica non resetta all'avvio
-    }
+    fetch("data/statoPartita.php")
+        .then(res => res.json())
+        .then(stato => {
+            if (stato.stato === "finita") {
+                // resetta la partita e segna che è in corso
+                fetch(`data/resetPartita.php?file=${nomeFilePartita}`)
+                    .then(() => {
+                        return fetch("data/statoPartita.php", {
+                            method: "POST",
+                            body: new URLSearchParams({ stato: "in_corso" })
+                        });
+                    })
+                    .then(() => {
+                        console.log("Partita pubblica resettata e avviata");
+                        avviaCountdown();
+                    });
+            } else {
+                console.log("Partita pubblica già in corso");
+                avviaCountdown();
+            }
+        })
+        .catch(err => {
+            console.error("Errore nel controllo dello stato partita:", err);
+            avviaCountdown(); // fallback
+        });
+}
+
 };
