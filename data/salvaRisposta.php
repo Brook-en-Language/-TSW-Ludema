@@ -38,13 +38,20 @@ if (flock($fp, LOCK_EX)) {
     $partita_data = json_decode($contenuto, true) ?? [];
 
     // BLOCCO oltre 70 pattern UNIVOCI
-    $patternGiocati = array_column($partita_data, 'pattern_id');
-    if (count(array_unique($patternGiocati)) >= 70) {
-        flock($fp, LOCK_UN);
-        fclose($fp);
-        echo json_encode(["status" => "fine", "messaggio" => "Pattern esauriti"]);
-        exit;
+$patternGiocati = array_column($partita_data, 'pattern_id');
+$patternUnici = array_unique($patternGiocati);
+
+// Se già 70 unici aggiorna stato e termina
+if (count($patternUnici) >= 70) {
+    if ($file === "partita_pubblica.json") {
+        file_put_contents("stato_partita_pubblica.json", json_encode(["stato" => "finita"], JSON_PRETTY_PRINT));
     }
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    echo json_encode(["status" => "fine", "messaggio" => "Pattern esauriti"]);
+    exit;
+}
+
 
     $partita_data[] = [
         "pattern_id" => $pattern_id,
