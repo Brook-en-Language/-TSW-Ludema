@@ -13,8 +13,12 @@ function eseguiB2() {
     window.location.href = "game.html";
 }
 
+
 const caricaClassifica = () => {
-    fetch("data/classifica.php")
+    const tipoPartita = localStorage.getItem("tipoPartita") || "privata";
+    const filePartita = tipoPartita === "pubblica" ? "partita_pubblica.json" : "partita_privata.json";
+
+    fetch(`data/classifica.php?file=${filePartita}`)
         .then(response => {
             if (!response.ok) throw new Error("E1");
             return response.json();
@@ -27,9 +31,13 @@ const caricaClassifica = () => {
         .catch(error => mostraErrore(error.message));
 };
 
+
 const aggiornaTabella = (classifica) => {
     const corpoTabella = document.getElementById("corpo-classifica");
     corpoTabella.innerHTML = '';
+
+    const codiceUtente = localStorage.getItem("codiceGiocatore");
+    const messaggioBox = document.getElementById("messaggioGiocatore");
 
     if (Object.keys(classifica).length === 0) {
         corpoTabella.innerHTML = `
@@ -42,13 +50,21 @@ const aggiornaTabella = (classifica) => {
 
     let posizione = 1;
     for (const [giocatore, punteggio] of Object.entries(classifica)) {
+        const evidenzia = giocatore === codiceUtente ? ' class="mio-risultato"' : '';
+        
         corpoTabella.innerHTML += `
-            <tr>
+            <tr${evidenzia}>
                 <td class="posizione">${posizione}°</td>
                 <td class="nome-giocatore">${giocatore}</td>
                 <td class="punteggio">${punteggio}</td>
             </tr>
         `;
+
+        // Mostra messaggio per il giocatore attuale
+        if (giocatore === codiceUtente) {
+            messaggioBox.textContent = `Hai totalizzato ${punteggio} punt${punteggio === 1 ? 'o' : 'i'}!`;
+        }
+
         posizione++;
     }
 };
