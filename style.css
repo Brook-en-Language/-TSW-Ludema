@@ -303,3 +303,19 @@ body {
     text-align: center;
     color: #f1e3e6;
 }
+
+.mio-risultato {
+    background-color: #9e0b94;
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.messaggio-risultato {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
