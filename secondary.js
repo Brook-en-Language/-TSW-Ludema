@@ -33,9 +33,10 @@ if (filtroSalvato) {
         'filtro-deuteranopia',
         'filtro-tritanopia'
     );
-
     document.body.classList.add(`filtro-${filtroSalvato}`);
-} 
+}
+
+ 
 
 const effettoSalvato = localStorage.getItem("E");
 if (effettoSalvato) {
