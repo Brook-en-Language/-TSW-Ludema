@@ -2,12 +2,19 @@ body {
     zoom: 110%;
     position: fixed;
     background-image: url('img/sfondo.png');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    margin: 0; 
-    height: 100vh; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
 }
+
+#contenutoGioco {
+    filter: none;
+    transition: filter 0.3s ease;
+}
+
+
 
 #filtro {
     position: absolute;
@@ -21,6 +28,7 @@ body {
     box-sizing: border-box;
 }
 
+/* Struttura del gioco */
 .proiettore {
     position: fixed;
     top: 0;
@@ -30,7 +38,7 @@ body {
     display: grid;
     place-items: center;
     z-index: 1000;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .proiettore img {
@@ -47,13 +55,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 80%; 
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     gap: 50px;
 }
 
+/* Pulsanti */
 .S1 {
     border: none;
     width: 100px;
@@ -124,18 +132,43 @@ body {
     background-size: contain;
 }
 
-.filtro-normale {
-    filter: none !important;
+.S1    { background-image: url("img/S1.png"); }
+.S2    { background-image: url("img/S2.png"); }
+.S3    { background-image: url("img/S3.png"); }
+.S4    { background-image: url("img/S4.png"); }
+.S5    { background-image: url("img/S5.png"); }
+
+.S1:active { background-image: url("img/S1-p.png"); }
+.S2:active { background-image: url("img/S2-p.png"); }
+.S3:active { background-image: url("img/S3-p.png"); }
+.S4:active { background-image: url("img/S4-p.png"); }
+.S5:active { background-image: url("img/S5-p.png"); }
+
+
+
+#filtroOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    backdrop-filter: none;
+    transition: backdrop-filter 0.3s ease;
 }
 
-.filtro-protanopia {
-    filter: contrast(0.8) brightness(1.2) saturate(0.6) hue-rotate(10deg);
+
+.filtro-protanopia #filtroOverlay {
+    backdrop-filter: saturate(0.6) hue-rotate(15deg) brightness(1.15) contrast(1.05);
 }
 
-.filtro-deuteranopia {
-    filter: contrast(0.8) brightness(1.2) saturate(0.5);
+
+.filtro-deuteranopia #filtroOverlay {
+    backdrop-filter: saturate(0.5) hue-rotate(-20deg) brightness(1.1) contrast(1.1);
 }
 
-.filtro-tritanopia {
-    filter: contrast(0.7) brightness(1.1) hue-rotate(45deg);
+
+.filtro-tritanopia #filtroOverlay {
+    backdrop-filter: saturate(0.4) hue-rotate(65deg) brightness(1.05) contrast(1.2);
 }
