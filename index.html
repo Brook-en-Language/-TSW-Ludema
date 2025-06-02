@@ -7,8 +7,6 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="filtro">
-
         <div>
             <audio id="musica" src="audio/musica.mp3" autoplay loop></audio>
         </div>
@@ -32,18 +30,18 @@
 
         <div id="con" class="contenitore">
             <div class="contenuto">
-                <div class="posizione-destra">
-                    <div class="etichetta">Volume generale</div>
+                <div class="posizione">
+                    <div class="etichetta">Volume musica</div>
                     <input id="vol" class="elemento" type="range" min="0" max="1" step="any" value="0.5">
                 </div>
-                <div class="posizione-destra">
+                <div class="posizione">
                     <div class="etichetta">Effetti sonori</div>
                     <select id="con1" class="elemento">
                         <option value="attiva">attiva</option>
                         <option value="disattiva">disattiva</option>
                     </select>
                 </div>
-                <div class="posizione-destra">
+                <div class="posizione">
                     <div class="etichetta">Modalità daltonismo</div>
                     <select id="con2" class="elemento">
                         <option value="normale">normale</option>
@@ -51,11 +49,6 @@
                         <option value="deuteranopia">deuteranopia</option>
                         <option value="tritanopia">tritanopia</option>
                     </select>
-                </div>
-                <div class="posizione-sinistra">
-                    <input type="text" id="con3" placeholder="Username">
-                    <input type="password" id="con4" placeholder="Password">
-                    <button id="con5" class="con5"></button>
                 </div>
             </div>
         </div>
@@ -154,7 +147,6 @@
         <!--ricorda--> 
         <p class="nota">Ludema per TSW da Bilotti Matteo e Palmieri Davide</p>
         <script src="main.js"></script>
-        </div>
     </body>
 </html>
 

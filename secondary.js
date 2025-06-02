@@ -3,7 +3,12 @@ const pulsante2 = document.getElementById("P2");
 const pulsante3 = document.getElementById("P3");
 const pulsante4 = document.getElementById("P4");
 const pulsante5 = document.getElementById("P5");
+
 const schermata = document.querySelector(".schermata");
+const pro = document.getElementById("pat");
+
+const sc = new Audio("audio/scambio.mp3");
+const sl = new Audio("audio/selezionato.mp3");
 
 const pulsanti = [pulsante1, pulsante2, pulsante3, pulsante4, pulsante5];
 pulsanti.forEach(p => p.disabled = true);  // disattiva bottoni all'avvio
@@ -12,13 +17,36 @@ let patternCorrente = null;
 let patternDisponibili = [...Array(70).keys()].map(i => i + 1);  // pattern 1-70
 let partitaFinita = false;
 
-let tempoPartitaMinuti = 1; // da cambiare
+let tempoPartitaMinuti = 3; // da cambiare
 let codiceUtente = localStorage.getItem("codiceGiocatore");
 
 if (!codiceUtente) {
     codiceUtente = "U" + Math.floor(1000 + Math.random() * 9000);
     localStorage.setItem("codiceGiocatore", codiceUtente);
 }
+
+const filtroSalvato = localStorage.getItem("F");
+if (filtroSalvato) {
+    document.body.classList.remove(
+        'filtro-normale',
+        'filtro-protanopia',
+        'filtro-deuteranopia',
+        'filtro-tritanopia'
+    );
+
+    document.body.classList.add(`filtro-${filtroSalvato}`);
+} 
+
+const effettoSalvato = localStorage.getItem("E");
+if (effettoSalvato) {
+    if (effettoSalvato === "attiva"){
+        sc.volume = 1;
+        sl.volume = 1;
+    } else{
+        sc.volume = 0;
+        sl.volume = 0;
+    }
+} 
 
 // Mostra ID utente nel div solo dopo averlo generato
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,6 +102,8 @@ function mostraProssimoPattern() {
 
     const index = Math.floor(Math.random() * patternDisponibili.length);
     patternCorrente = patternDisponibili.splice(index, 1)[0];
+    sc.play();
+    pro.src = `pattern/${patternCorrente}.png`;
     console.log("Mostrato pattern:", patternCorrente);
     schermata.textContent = `Pattern: ${patternCorrente}`;
 }
@@ -103,8 +133,11 @@ function inviaRisposta(patternId, valore, codice) {
 }
 
 // evento al click utente
-pulsante1.addEventListener("click", () => inviaRisposta(patternCorrente, 1, codiceUtente));
-pulsante2.addEventListener("click", () => inviaRisposta(patternCorrente, 0, codiceUtente));
+pulsante1.addEventListener("click", () => {inviaRisposta(patternCorrente, 1, codiceUtente);sl.play();});
+pulsante2.addEventListener("click", () => {inviaRisposta(patternCorrente, 2, codiceUtente);sl.play();});
+pulsante3.addEventListener("click", () => {inviaRisposta(patternCorrente, 3, codiceUtente);sl.play();});
+pulsante4.addEventListener("click", () => {inviaRisposta(patternCorrente, 4, codiceUtente);sl.play();});
+pulsante5.addEventListener("click", () => {inviaRisposta(patternCorrente, 5, codiceUtente);sl.play();});
 
 // modalità per la demo
 function avviaBot() {

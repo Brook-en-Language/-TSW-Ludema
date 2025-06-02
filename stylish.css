@@ -1,14 +1,16 @@
 body {
     zoom: 110%;
     position: fixed;
-    background-color: #85727c;
+    background-image: url('img/sfondo.png');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
     margin: 0; 
     height: 100vh; 
 }
 
 #filtro {
     position: absolute;
-    right: 5%;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -19,7 +21,29 @@ body {
     box-sizing: border-box;
 }
 
+.proiettore {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    pointer-events: none; 
+}
+
+.proiettore img {
+    position: fixed;
+    max-width: min(40vw, 600px);
+    max-height: min(40vh, 400px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .pulsantiera {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,34 +54,74 @@ body {
     gap: 50px;
 }
 
-.S1{
+.S1 {
+    border: none;
     width: 100px;
     height: 100px;
+    background: url("img/S1.png") no-repeat center center;
+    background-size: contain;
     cursor: pointer;
 }
 
-.S2{
+.S1:active {
+    background: url("img/S1-p.png") no-repeat center center;
+    background-size: contain;
+}
+
+.S2 {
+    border: none;
     width: 100px;
     height: 100px;
+    background: url("img/S2.png") no-repeat center center;
+    background-size: contain;
     cursor: pointer;
 }
 
-.S3{
+.S2:active {
+    background: url("img/S2-p.png") no-repeat center center;
+    background-size: contain;
+}
+
+.S3 {
+    border: none;
     width: 100px;
     height: 100px;
+    background: url("img/S3.png") no-repeat center center;
+    background-size: contain;
     cursor: pointer;
+}
+
+.S3:active {
+    background: url("img/S3-p.png") no-repeat center center;
+     background-size: contain;
 }
 
 .S4{
+    border: none;
     width: 100px;
     height: 100px;
+    background: url("img/S4.png") no-repeat center center;
+    background-size: contain;
     cursor: pointer;
 }
 
+.S4:active {
+    background: url("img/S4-p.png") no-repeat center center;
+     background-size: contain;
+}
+
 .S5{
+    border: none;
     width: 100px;
     height: 100px;
+    background: url("img/S5.png") no-repeat center center;
+    background-size: contain;
     cursor: pointer;
+}
+
+.S5:active {
+    background: url("img/S5-p.png") no-repeat center center;
+    background-size: contain;
 }
 
 .filtro-normale {

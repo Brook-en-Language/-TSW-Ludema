@@ -1,9 +1,15 @@
 const b1 = document.getElementById("btn1");
 const b2 = document.getElementById("btn2");
 
+const m1 = localStorage.getItem("M");
+
 b1.addEventListener("click", eseguiB1);
 b2.addEventListener("click", eseguiB2);
 document.addEventListener("DOMContentLoaded", () => {caricaClassifica();});
+
+if (m1) {
+    musica.volume = m1;
+}  
 
 function eseguiB1() {
     window.location.href = "index.html";
