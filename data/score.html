@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ludema - Risultati finali!</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div>
+            <audio id="musica" src="audio/motivo.mp3" autoplay loop></audio>
+        </div>
+
+        <div class="contenitore-classifica">
+            <div id="messaggioGiocatore" class="messaggio-risultato"></div>
+            <table class="tabella-classifica">
+                <thead>
+                    <tr>
+                        <th>POSIZIONE</th>
+                        <th>GIOCATORE</th>
+                        <th>PUNTEGGIO</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-classifica">
+                    <tr>
+                        <td colspan="3" class="caricamento">Caricamento dati...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <button id="btn1" class="bsx"></button>
+            <button id="btn2" class="bdx"></button>
+        </div>
+
+        <script src="tertiary.js"></script>
+    </body>
+</html>
