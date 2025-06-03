@@ -9,12 +9,15 @@ body {
     height: 100vh;
 }
 
+@font-face{
+    font-family: "rajdhani"; 
+    src: url("font/rajdhani-semibold.ttf") format('truetype');
+}
+
 #contenutoGioco {
     filter: none;
     transition: filter 0.3s ease;
 }
-
-
 
 #filtro {
     position: absolute;
@@ -28,7 +31,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Struttura del gioco */
 .proiettore {
     position: fixed;
     top: 0;

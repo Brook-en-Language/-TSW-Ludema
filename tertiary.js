@@ -7,6 +7,17 @@ b1.addEventListener("click", eseguiB1);
 b2.addEventListener("click", eseguiB2);
 document.addEventListener("DOMContentLoaded", () => {caricaClassifica();});
 
+const filtroSalvato = localStorage.getItem("F");
+if (filtroSalvato) {
+    document.body.classList.remove(
+        'filtro-normale',
+        'filtro-protanopia',
+        'filtro-deuteranopia',
+        'filtro-tritanopia'
+    );
+    document.body.classList.add(`filtro-${filtroSalvato}`);
+}
+
 if (m1) {
     musica.volume = m1;
 }  
@@ -18,7 +29,6 @@ function eseguiB1() {
 function eseguiB2() {
     window.location.href = "game.html";
 }
-
 
 const caricaClassifica = () => {
     const tipoPartita = localStorage.getItem("tipoPartita") || "privata";

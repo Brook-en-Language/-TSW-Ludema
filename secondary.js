@@ -147,7 +147,7 @@ function avviaBot() {
         if (!patternCorrente || partitaFinita || !demoAttiva) return;
 
         botCodici.forEach(bot => {
-            const valore = Math.round(Math.random());
+            const valore = Math.round(Math.random() * 2) + 1;
             inviaRisposta(patternCorrente, valore, bot);
         });
     }, 3000);

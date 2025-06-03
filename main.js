@@ -20,6 +20,19 @@ vo.addEventListener("input", modificaVO);
 c1.addEventListener("change", modificaC1);
 c2.addEventListener("change", modificaC2);
 
+const lb = document.getElementById("lobbyPubblica");
+document.addEventListener("keydown", function(event) {
+    if (event.key === "\\") { 
+        lb.style.display = "flex";
+    }
+}); 
+
+document.addEventListener("keyup", function(event) {
+    if (event.key === "\\") { 
+        lb.style.display = "none";
+    }
+}); 
+
 const filtroSalvato = localStorage.getItem("F");
 if (filtroSalvato) {
     document.body.classList.add(`filtro-${filtroSalvato}`);
@@ -60,23 +73,23 @@ function modificaC1(){
 
 function modificaC2(){
     document.body.classList.remove(
-        'filtro-normale',
-        'filtro-protanopia',
-        'filtro-deuteranopia',
-        'filtro-tritanopia'
+        "filtro-normale",
+        "filtro-protanopia",
+        "filtro-deuteranopia",
+        "filtro-tritanopia"
     );
 
     if(c2.value === "normale") {
-        document.body.classList.add('filtro-normale');
+        document.body.classList.add("filtro-normale");
         localStorage.setItem("F", c2.value);
     } else if (c2.value === "protanopia") {
-        document.body.classList.add('filtro-protanopia');
+        document.body.classList.add("filtro-protanopia");
         localStorage.setItem("F", c2.value);
     } else if (c2.value === "deuteranopia"){
-        document.body.classList.add('filtro-deuteranopia');
+        document.body.classList.add("filtro-deuteranopia");
         localStorage.setItem("F", c2.value);
     } else if (c2.value === "tritanopia"){
-        document.body.classList.add('filtro-tritanopia');
+        document.body.classList.add("filtro-tritanopia");
         localStorage.setItem("F", c2.value);
     }
 }
@@ -99,13 +112,13 @@ function apriGI(){
     n2.style.display = "flex";
 }
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && cn.style.display === 'flex') {
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape" && cn.style.display === "flex") {
         riproduciDI();
-        cn.style.display = 'none';
-    } else if (event.key === 'Escape' && nc.style.display === 'flex') { 
+        cn.style.display = "none";
+    } else if (event.key === "Escape" && nc.style.display === "flex") { 
         riproduciDI();
-        nc.style.display = 'none'; 
+        nc.style.display = "none"; 
     }
 });
 

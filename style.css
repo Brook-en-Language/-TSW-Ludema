@@ -31,7 +31,7 @@ body {
 .nota{
     position: fixed;
     color: #f1e3e6;
-    bottom: 1%; 
+    bottom: 0%; 
     right: 1%;
 }
 
