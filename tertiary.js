@@ -70,7 +70,7 @@ const aggiornaTabella = (classifica) => {
         
         corpoTabella.innerHTML += `
             <tr${evidenzia}>
-                <td class="posizione">${posizione}°</td>
+                <td class="posizione-s">${posizione}°</td>
                 <td class="nome-giocatore">${giocatore}</td>
                 <td class="punteggio">${punteggio}</td>
             </tr>
