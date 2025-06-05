@@ -161,9 +161,9 @@ body {
     align-items: center;
     gap: 10px;
     padding-bottom: 10px;
-    width: 80%; /* Sostituisce "fit-content" per occupare spazio controllato */
-    max-width: 250px; /* Opzionale: limita l'allargamento eccessivo */
-    margin: 0 auto; /* Centratura orizzontale (se il genitore è più largo) */
+    width: 80%; 
+    max-width: 250px; 
+    margin: 0 auto; 
 }
 
 
@@ -249,19 +249,19 @@ body {
 .tabella-classifica {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
     color: #f1e3e6;
 }
 
 .tabella-classifica th {
-    padding: 12px 15px;
-    text-align: left;
+    padding: 15px;
     background-color: rgba(0, 0, 0, 0.4);
     border-bottom: 1px solid #333;
     border-right: 1px solid #333;
 }
 
 .tabella-classifica td {
-    padding: 12px 15px;
+    padding: 15px;
     border-bottom: 1px solid #333;
     border-right: 1px solid #333;
 }
@@ -274,18 +274,18 @@ body {
     border-bottom: none;
 }
 
-.posizione {
+.posizione-s {
     font-weight: bold;
-    width: 80px;
+    text-align: left;
 }
 
 .nome-giocatore {
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .punteggio {
     font-weight: bold;
-    text-align: right;
+    text-align: left;
     color: #f1e3e6;
 }
 
