@@ -73,7 +73,8 @@
         <!-- Script per aggiornare la lista ogni 3 secondi -->
 
         <script>
-            fetch('data/getGiocatori.php')
+            function aggiornaLobbyPubblica() {
+    fetch('data/getGiocatori.php')
         .then(response => response.json())
         .then(giocatori => {
             const ul = document.getElementById('listaGiocatoriLobby');
@@ -82,9 +83,9 @@
             ul.innerHTML = '';
 
             if (giocatori.length > 0) {
-                lobbyDiv.style.display = 'block'; // Mostra il div se ci sono giocatori
+                lobbyDiv.style.display = 'block';
             } else {
-                lobbyDiv.style.display = 'none'; // Nascondilo se la lista è vuota
+                lobbyDiv.style.display = 'none';
             }
 
             giocatori.forEach(g => {
@@ -94,9 +95,10 @@
             });
         })
         .catch(err => console.error('Errore nel caricamento dei giocatori:', err));
+}
 
-            setInterval(aggiornaLobbyPubblica, 3000);
-            aggiornaLobbyPubblica(); // prima esecuzione
+setInterval(aggiornaLobbyPubblica, 3000); // chiamata dopo la definizione
+aggiornaLobbyPubblica(); // prima esecuzione
         </script>
 
         <script>
@@ -155,4 +157,5 @@
         <script src="main.js"></script>
     </body>
 </html>
+
 
