@@ -73,24 +73,28 @@
         <!-- Script per aggiornare la lista ogni 3 secondi -->
 
         <script>
-            function aggiornaLobbyPubblica() {
-                fetch('data/getGiocatori.php')
-                    .then(response => response.json())
-                    .then(giocatori => {
-                        const ul = document.getElementById('listaGiocatoriLobby');
-                        ul.innerHTML = '';
-                        giocatori.forEach(g => {
-                            const li = document.createElement('li');
-                            if (typeof g === "string") {
-                                li.textContent = g;
-                            } else {
-                                li.textContent = g.nome || g.codice || "Giocatore";
-                                }
-                            ul.appendChild(li);
-                            });
-                    })
-                    .catch(err => console.error('Errore nel caricamento dei giocatori:', err));
+            fetch('data/getGiocatori.php')
+        .then(response => response.json())
+        .then(giocatori => {
+            const ul = document.getElementById('listaGiocatoriLobby');
+            const lobbyDiv = document.getElementById('lobbyPubblica');
+
+            ul.innerHTML = '';
+
+            if (giocatori.length > 0) {
+                lobbyDiv.style.display = 'block'; // Mostra il div se ci sono giocatori
+            } else {
+                lobbyDiv.style.display = 'none'; // Nascondilo se la lista è vuota
             }
+
+            giocatori.forEach(g => {
+                const li = document.createElement('li');
+                li.textContent = typeof g === 'string' ? g : (g.nome || g.codice || 'Giocatore');
+                ul.appendChild(li);
+            });
+        })
+        .catch(err => console.error('Errore nel caricamento dei giocatori:', err));
+
             setInterval(aggiornaLobbyPubblica, 3000);
             aggiornaLobbyPubblica(); // prima esecuzione
         </script>
